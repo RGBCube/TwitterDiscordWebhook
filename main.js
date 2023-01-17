@@ -3,48 +3,41 @@ import { Webhook } from "discord-webhook-node";
 
 const config = require("config.json");
 
-const wClient = new Webhook(config.webhook_url);
-wClient.setAvatar(config.webhook_avatar);
-wClient.setUsername(config.webhook_name);
+const dClient = new Webhook(config.discord.webhookUrl);
+dClient.setUsername(config.discord.webhookName);
+dClient.setAvatar(config.discord.webhookAvatar);
 
 const tClient = new Twitter({
-    consumer_key: config.api_key,
-    consumer_secret: config.api_secret,
-    access_token: config.access_token,
-    access_token_secret: config.acesss_secret,
+    consumer_key: config.twitter.apiKey,
+    consumer_secret: config.twitter.apiSecret,
+    access_token: config.twitter.accessToken,
+    access_token_secret: config.twitter.acessSecret,
 });
 
 tClient.get("account/verify_credentials", { skip_status: true })
     .catch(err =>
-        console.log(`Unable to login due to the following error:\n${err}`)
+        console.error(`Unable to login due to the following error:\n${err}`)
     )
     .then(res =>
-        console.log(`Logged in as '${res.data.name}'!`)
+        console.info(`Logged in as '${res.data.name}'!`)
     );
 
-let stream = tClient.stream("statuses/filter", { follow: config.user_id });
+console.info(`Fetching tweets from ID '${config.followingUserId}'.`);
 
-console.log(`Fetching tweets from id '${config.user_id}'.`);
+tClient.stream("statuses/filter", { follow: config.followingUserId })
+    .on("tweet", twt => {
+        if (twt.retweeted_status || twt.in_reply_to_status_id || twt.is_quote_status) return;
 
-stream.on("connected", () =>
-    console.log("Successfully connected to Twitter!")
-);
+        let twitterLink = `https://twitter.com/${twt.user.screen_name}/status/${twt.id_str}`;
+        dClient.send(`${config.discord.webhookMessage} ${twitterLink}`);
+    })
 
-stream.on("tweet", twt => {
-    if(twt.retweeted_status || twt.in_reply_to_status_id || twt.is_quote_status) return;
+    .on("connected", () => console.info("Connected to Twitter!"))
 
-    let twitterLink = `https://twitter.com/${twt.user.screen_name}/status/${twt.id_str}`;
-    wClient.send(`${config.webhook_message} ${twitterLink}`);
-});
-  
-stream.on("disconnect", () =>
-    console.log("Disconnected from twitter!")
-);
+    .on("disconnect", () => console.warn("Disconnected from Twitter!"))
 
-stream.on("reconnect", () =>
-    console.log("Reconnecting to Twitter!")
-);
+    .on("reconnect", () => console.info("Reconnected to Twitter!"));
 
 process.on("uncaughtException", err =>
-    console.log(`Something (bad) happened: ${err}`)
+    console.error(`Something (bad) happened:\n${err}`)
 );

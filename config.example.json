@@ -1,11 +1,15 @@
 {
-  "webhook_url": "",
-  "webhook_name": "",
-  "webhook_avatar": "",
-  "webhook_message": "",
-  "api_key": "",
-  "api_secret": "",
-  "access_token": "",
-  "acesss_secret": "",
-  "user_id": ""
+  "discord": {
+    "webhookUrl": "",
+    "webhookName": "",
+    "webhookAvatar": "",
+    "webhookMessage": ""
+  },
+  "twitter": {
+    "apiKey": "",
+    "apiSecret": "",
+    "accessToken": "",
+    "acessSecret": ""
+  },
+  "followingUserId": ""
 }
