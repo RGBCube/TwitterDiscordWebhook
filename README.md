@@ -22,7 +22,7 @@ Edit the `config.example.json` and rename it to `config.json` with the given inf
 * `twitter.apiSecret`: The Twitter API secret, requires a Twitter developer account.
 * `twitter.accessToken`: The Twitter account access token, requires a Twitter developer account.
 * `twitter.accessSecret`: The Twitter account acesss secret, requires a Twitter developer account.
-* `followingUserId`: The user ID for the Twitter account you want notifications from, to find a Twitter id use [this](https://tweeterid.com/) tool.
+* `followingUserId`: The user ID for the Twitter account you want notifications from, to find a Twitter ID use [this](https://tweeterid.com/) tool.
 
 ### Install Dependencies
 > You will need Node.js installed to do this and the next section! If you don't have it installed, you can install it from [here](https://nodejs.org/en/).
