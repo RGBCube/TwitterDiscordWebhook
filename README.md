@@ -12,7 +12,7 @@ cd discord-twitter-webhook
 ```
 
 ### Configure
-Edit the `config.json` with the given information below:
+Edit the `config.example.json` and rename it to `config.json` with the given information below:
 
 * `webhook_url`: The Discord webhook url, for more information check out [this](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) page.
 * `webhook_name`: The username of your Discord webhook.
