@@ -17,7 +17,7 @@ Edit the `config.example.json` and rename it to `config.json` with the given inf
 * `discord.webhookUrl`: The Discord webhook url, for more information check out [this](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) page.
 * `discord.webhookName`: The username of your Discord webhook.
 * `discord.webhookAvatar`: The avatar of your Discord webhook.
-* `discord.webhookMessage`: The message before your Twitter link. Formatted as `{message} {tweet_link}`, no newline added.
+* `discord.webhookMessage`: The message before your Twitter link. Formatted as `{message} {tweetLink}`, no newline added.
 * `twitter.apiKey`: The Twitter API key, if you do not have a Twitter developer account then check out [this](https://developer.twitter.com/en) page.
 * `twitter.apiSecret`: The Twitter API secret, requires a Twitter developer account.
 * `twitter.accessToken`: The Twitter account access token, requires a Twitter developer account.
