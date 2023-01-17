@@ -1,0 +1,9 @@
+*
+node_modules/
+
+!.gitignore
+!*.md
+!*.js
+!package.json
+!package-lock.json
+!*.example.json
