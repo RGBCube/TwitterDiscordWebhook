@@ -7,7 +7,7 @@ Simple (enough) to configure Twitter -> Discord webhook. Runs on Node.js
 > You will need `git` installed to do this!
 
 ```sh
-git clone https://github.com/Stovven/twitter-discord-webhook
+git clone https://github.com/RGBCube/twitter-discord-webhook
 cd twitter-discord-webhook
 ```
 
