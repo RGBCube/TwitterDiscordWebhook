@@ -16,12 +16,9 @@ const tClient = new Twitter({
 });
 
 tClient.get("account/verify_credentials", { skip_status: true })
-    .catch(err =>
-        console.error(`Unable to login due to the following error:\n${err}`)
-    )
-    .then(res =>
-        console.info(`Logged in as '${res.data.name}'!`)
-    );
+    .catch(err => console.error(`Unable to login due to the following error:\n${err}`))
+
+    .then(res => console.info(`Logged in as '${res.data.name}'!`));
 
 console.info(`Fetching tweets from ID '${config.followingUserId}'.`);
 
