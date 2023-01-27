@@ -1,7 +1,8 @@
+import fs from "fs";
 import Twitter from "twit";
 import { Webhook } from "discord-webhook-node";
 
-const config = require("config.json");
+const config = JSON.parse(fs.readFileSync("./config.json"));
 
 const dClient = new Webhook(config.discord.webhookUrl);
 dClient.setUsername(config.discord.webhookName);

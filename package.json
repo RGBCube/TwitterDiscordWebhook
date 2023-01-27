@@ -5,6 +5,7 @@
   "main": "main.js",
   "author": "Stovven & RGBCube",
   "license": "AGPL",
+  "type": "module",
   "dependencies": {
     "discord-webhook-node": "^1.1.8",
     "twit": "^2.2.11"
